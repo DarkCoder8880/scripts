@@ -1,0 +1,60 @@
+main script:
+script.Parent.Torso.Touched:connect(function(hit)
+	local human = hit.Parent:FindFirstChild("Humanoid") 
+	if (human == nil) then 
+		
+		if hit.Parent:FindFirstChild("Humanoid") then
+			local player = game.Players:FindFirstChild(hit.Parent)
+			
+			if hit.Parent.Name == "90usman" then
+				
+		else
+			hit.Parent:FindFirstChild("Humanoid").Health = 0
+		end
+
+		end 
+		end
+
+end)
+
+local commands = require(script.robotcommands)
+game.Players.PlayerAdded:Connect(function(plr)
+	
+	plr.Chatted:Connect(function(msg)
+		
+			local msg = msg:split(' ')
+			if commands[msg[1]] then
+				if msg[2] then
+					commands[msg[1]](msg[2])
+				end
+			end
+		
+	end)
+end)
+
+module script(robotcommmands/commands):
+local rcommands = {}
+
+function rcommands.attack(plrname)
+	local plrcharacter = game.Workspace:FindFirstChild(plrname)
+	print(plrcharacter)
+	while plrcharacter.Humanoid.Health > 0 do
+	script.Parent.Parent.Humanoid:MoveTo(plrcharacter.HumanoidRootPart.Position)
+	end
+
+	if plrcharacter.Humanoid.Health == 0 then
+		if game.Workspace:FindFirstChild("90usman") then
+			script.Parent.Parent.Humanoid:MoveTo(game.Workspace:FindFirstChild("90usman").HumanoidRootPart.Position)
+		end
+		end
+end
+
+function rcommands.defend()
+	
+end
+
+function rcommands.follow()
+	
+end
+
+return rcommands
