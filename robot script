@@ -16,7 +16,10 @@ script.Parent.Torso.Touched:connect(function(hit)
 		end
 
 end)
-
+       
+  -----------------------------------------------------------------------------------------     
+       
+       
 local commands = require(script.robotcommands)
 game.Players.PlayerAdded:Connect(function(plr)
 	
